@@ -2,6 +2,7 @@
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 repos=(
 	'git@github.com:gangleri/vimrc.git'
@@ -18,5 +19,6 @@ do
 	git clone "$i" 
 done
 
+brew install stow
 stow -t ~. ../*
 
