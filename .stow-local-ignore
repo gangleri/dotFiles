@@ -1,3 +1,7 @@
-*/Readme.md
-
+# complete folders to ignore
+dotFiles/*
 brewfile/*
+iterm/*
+
+# ignore files within folders
+*/Readme.md
