@@ -14,11 +14,10 @@ do
 	ssh-add -K ~/.ssh/gangleri${k}
 
 	pbcopy < "$HOME/.ssh/gangleri${k}"
-	print "Add key to ${k}"
+	echo "Add key to ${k}"
 	read -r -p "Press enter to continue"
 done
 
-mkdir -p ~/.config/figlet/fonts
 mkdir -p ~/Code
 
 git clone git@github.com:gangleri/dotFiles.git ~/Code/dotFiles
@@ -30,12 +29,13 @@ git clone git@github.com:gangleri/dotFiles.git ~/Code/dotFiles
 }
 
 # Install fonts used by figlet, get the installed version of figlet to determine the path to write to
-curl -o ~/.config/figlet/fonts/Bloody.flf https://raw.githubusercontent.com/xero/figlet-fonts/master/Bloody.flf
+curl --create-dirs -o ~/.config/figlet/fonts/Bloody.flf https://raw.githubusercontent.com/xero/figlet-fonts/master/Bloody.flf
 
 {
 	# use stow to symlink dotfiles into correct locations
 	cd ~/Code/dotFiles/ || exit 1
-	stow -t ~/. *
+	rm ~/.zshrc
+	stow --no-folding -t ~/ dotFiles
 }
 
 {
