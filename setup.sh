@@ -28,8 +28,9 @@ cd brewfile
 brew bundle install
 cd ..
 
-# Install fonts used by figlet
-curl -o /usr/local/Cellar/figlet/2.2.5/share/figlet/fonts/Bloody.flf https://raw.githubusercontent.com/xero/figlet-fonts/master/Bloody.flf
+# Install fonts used by figlet, get the installed version of figlet to determine the path to write to
+mkdir -p ~/.config/figlet/fonts
+curl -o ~/.config/figlet/fonts/Bloody.flf https://raw.githubusercontent.com/xero/figlet-fonts/master/Bloody.flf
 
 # use stow to symlink dotfiles into correct locations
 for D in ../*
@@ -56,3 +57,4 @@ defaults write com.apple.screencapture location ~/Pictures/ScreenCaptures
 # show status and path in Finder windows
 defaults write com.apple.finder ShowPathbar -bool true
 defaults write com.apple.finder ShowStatusBar -bool true
+
