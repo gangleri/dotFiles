@@ -17,6 +17,8 @@ repos=(
 	'git@github.com:gangleri/default-node-modules.git'
 )
 
+mkdir -p ~/Code/dotFiles
+
 # clone the repos
 for i in "${repos[@]}" 
 do 
@@ -24,9 +26,10 @@ do
 done
 
 # install all programs listed in the brefile
-cd brewfile
-brew bundle install
-cd ..
+{
+	cd ~/Code/dotfiles/brewfile || exit 1
+	brew bundle install
+}
 
 # Install fonts used by figlet, get the installed version of figlet to determine the path to write to
 mkdir -p ~/.config/figlet/fonts
@@ -35,15 +38,16 @@ curl -o ~/.config/figlet/fonts/Bloody.flf https://raw.githubusercontent.com/xero
 # use stow to symlink dotfiles into correct locations
 for D in ../*
 do
-	echo $(basename $D)
-	stow -d ../ -t ~/. $(basename "$D")
+	stow -d ../ -t ~/. "$(basename "$D")"
 done
 
 # install mgitstatus tool 
-cd ~/Code
-git clone https://github.com/fboender/multi-git-status.git
-cd multi-git-status
-PREFIX=~/.local ./install.sh
+{
+	cd ~/Code || exit 1
+	git clone https://github.com/fboender/multi-git-status.git
+	cd multi-git-status || exit 1
+	PREFIX=~/.local ./install.sh
+}
 
 # setup launchpad icons to smaller size
 defaults write com.apple.dock springboard-rows -int 10
