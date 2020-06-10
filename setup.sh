@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-# install oh-my-zsh, vundle, Homebrew, nvm
+# install xcode cli tools, oh-my-zsh, vundle, Homebrew, nvm
+xcode-select --install
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
@@ -19,11 +20,14 @@ repos=(
 
 mkdir -p ~/Code/dotFiles
 
-# clone the repos
-for i in "${repos[@]}" 
-do 
-	git clone "$i" 
-done
+{
+	cd ~/Code/dotFiles || exit 1
+	# clone the repos
+	for i in "${repos[@]}" 
+	do 
+		git clone "$i" 
+	done
+}
 
 # install all programs listed in the brefile
 {
