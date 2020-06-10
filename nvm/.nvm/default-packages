@@ -1,0 +1,9 @@
+# $NVM_DIR/default-packages
+
+@vue/cli
+@vue/devtools
+@aws-amplify/cli
+@nestjs/cli
+npm
+neovim
+typescript

@@ -7,27 +7,21 @@ git clone git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vu
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | zsh
 
-repos=(
-	'git@github.com:gangleri/vimrc.git'
-	'git@github.com:gangleri/zsh-config.git'
-	'git@github.com:gangleri/ssh.git'
-	'git@github.com:gangleri/gitConfig.git'
-	'git@github.com:gangleri/dotFiles.git'
-	'git@github.com:gangleri/brewfile.git'
-	'git@github.com:gangleri/iterm.git'
-	'git@github.com:gangleri/default-node-modules.git'
-)
+# generate ssh keys
+for k in 'GitHub' 'GitLab'
+do
+	ssh-keygen -t rsa -b 4096 -f ~/.ssh/gangleri${k} -C "${EMAIL:-alan@gangleri.net}"
+	ssh-add -K ~/.ssh/gangleri${k}
 
-mkdir -p ~/Code/dotFiles
+	pbcopy < "$HOME/.ssh/gangleri${k}"
+	print "Add key to ${k}"
+	read -r -p "Press enter to continue"
+done
 
-{
-	cd ~/Code/dotFiles || exit 1
-	# clone the repos
-	for i in "${repos[@]}" 
-	do 
-		git clone "$i" 
-	done
-}
+mkdir -p ~/.config/figlet/fonts
+mkdir -p ~/Code
+
+git clone git@github.com:gangleri/dotFiles.git ~/Code/dotFiles
 
 # install all programs listed in the brefile
 {
@@ -36,17 +30,16 @@ mkdir -p ~/Code/dotFiles
 }
 
 # Install fonts used by figlet, get the installed version of figlet to determine the path to write to
-mkdir -p ~/.config/figlet/fonts
 curl -o ~/.config/figlet/fonts/Bloody.flf https://raw.githubusercontent.com/xero/figlet-fonts/master/Bloody.flf
 
-# use stow to symlink dotfiles into correct locations
-for D in ~/Code/dotFiles/*
-do
-	stow -d ~/Code/dotFiles/ -t ~/. "$(basename "$D")"
-done
-
-# install mgitstatus tool 
 {
+	# use stow to symlink dotfiles into correct locations
+	cd ~/Code/dotFiles/ || exit 1
+	stow -t ~/. *
+}
+
+{
+	# install mgitstatus tool 
 	cd ~/Code || exit 1
 	git clone https://github.com/fboender/multi-git-status.git
 	cd multi-git-status || exit 1
@@ -55,7 +48,7 @@ done
 
 # setup launchpad icons to smaller size
 defaults write com.apple.dock springboard-rows -int 10
-defaults write com.apple.dock springboard-columns -int 10;killall Dock
+defaults write com.apple.dock springboard-columns -int 10; killall Dock
 
 # screen captures
 defaults write com.apple.screencapture type PNG

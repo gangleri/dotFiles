@@ -2,6 +2,9 @@
 dotFiles/*
 brewfile/*
 iterm/*
+.git
 
 # ignore files within folders
-*/Readme.md
+.gitignore
+setup.sh
+Readme.md

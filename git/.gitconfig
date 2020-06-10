@@ -1,0 +1,60 @@
+[user]
+	name = Alan
+	email = alan@gangleri.net
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[http]
+	sslVerify = true
+	cookiefile = /Users/alan/.gitcookies
+[url "git@gitlab.com:"]
+	insteadOf = https://gitlab.com/
+[url "git@bitbucket.org:"]
+	insteadOf = https://bitbucket.org/
+# [url "git@github.com:"]
+# 	insteadOf = https://github.com/
+[alias]
+	aa = add -A
+	bls = branch --list
+	p = push
+	pl = pull
+	s = status
+	bl = branch -l
+	c = commit
+	ca = commit -a 
+	cl = clone
+	cm = commit -m
+	cam = commit -am
+	b = branch
+	bs = "!f() { git  branch --all | grep --color=always -i $1; }; f"
+	cf = diff --name-only --diff-filter=U
+	co = checkout
+	co- = checkout -- .
+	com = checkout master
+	cob = checkout -b
+	i = init
+	t =  tag
+	ta = tag  -a 
+	d = diff
+	l = log -p
+	rH = reset --hard HEAD
+	st = stash
+	mom = merge origin/master
+	mm = merge master
+	contains = !sh -c 'git branch -a --contains $1'
+	search = !sh -c 'git grep "$1" $(git rev-list --all)'
+	puo = "!f(){ \
+			git push -u origin $(git branch | grep \\* | cut -d ' ' -f2); \
+		}; f"
+	bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
+	alias = "!f() { git config --list | grep alias | sed -r 's/alias\\.(.+)=(.+)/\\1\\t\\t\\2/'; }; f"
+	al=alias
+	cmp = "!f(){ \
+			git checkout master; git pull; \
+		}; f"
+	dn = "!f() { \
+		var=($(git status | grep 'modified' | sed s/modified\\://g)); \
+		git diff ${var[${1:-0}]};  \
+		}; f"
