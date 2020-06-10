@@ -61,4 +61,4 @@ defaults write com.apple.screencapture location ~/Pictures/ScreenCaptures
 # show status and path in Finder windows
 defaults write com.apple.finder ShowPathbar -bool true
 defaults write com.apple.finder ShowStatusBar -bool true
-
+defaults write com.apple.finder NewWindowTarget -string 'PfHm'
