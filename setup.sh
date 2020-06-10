@@ -36,9 +36,9 @@ mkdir -p ~/.config/figlet/fonts
 curl -o ~/.config/figlet/fonts/Bloody.flf https://raw.githubusercontent.com/xero/figlet-fonts/master/Bloody.flf
 
 # use stow to symlink dotfiles into correct locations
-for D in ../*
+for D in ~/Code/dotFiles/*
 do
-	stow -d ../ -t ~/. "$(basename "$D")"
+	stow -d ~/Code/dotFiles/ -t ~/. "$(basename "$D")"
 done
 
 # install mgitstatus tool 
