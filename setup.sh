@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-# install xcode cli tools, oh-my-zsh, vundle, Homebrew, nvm
-xcode-select --install
+which git || echo "Install XCode cli tools first xcode-select --install" && exit 1;
+
+# install oh-my-zsh, vundle, Homebrew, nvm
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
@@ -59,3 +60,11 @@ defaults write com.apple.screencapture location ~/Pictures/ScreenCaptures
 defaults write com.apple.finder ShowPathbar -bool true
 defaults write com.apple.finder ShowStatusBar -bool true
 defaults write com.apple.finder NewWindowTarget -string 'PfHm'
+
+# Writing of .DS_Store files on network or USB volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
+# Customise menubar
+open '/System/Library/CoreServices/Menu Extras/Bluetooth.menu'
+open '/System/Library/CoreServices/Menu Extras/Volume.menu'
