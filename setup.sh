@@ -3,9 +3,9 @@
 which git ||  (echo "Install XCode cli tools first xcode-select --install" && exit 1)
 
 # install oh-my-zsh, vundle, Homebrew, nvm
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+curl -o- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh
 git clone git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+curl -o- https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | zsh
 
 # generate ssh keys
