@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-which git ||  (echo "Install XCode cli tools first xcode-select --install" && exit 1)
+which git ||  (echo "Install XCode cli tools and accept the license xcode-select --install && sudo xcodebuild -license" && exit 1)
 
 # install oh-my-zsh, vundle, Homebrew, nvm
 curl -o- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh
@@ -16,7 +16,8 @@ do
 
 	pbcopy < "$HOME/.ssh/gangleri${k}"
 	echo "Add key to ${k}"
-	read -r -p "Press enter to continue"
+	echo "Press enter to continue"
+	read
 done
 
 mkdir -p ~/Code
