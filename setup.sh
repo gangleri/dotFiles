@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-which git ||  {echo "Install XCode cli tools first xcode-select --install" && exit 1}
+which git ||  (echo "Install XCode cli tools first xcode-select --install" && exit 1)
 
 # install oh-my-zsh, vundle, Homebrew, nvm
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
