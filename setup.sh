@@ -37,7 +37,7 @@ curl --create-dirs -o ~/.config/figlet/fonts/Bloody.flf https://raw.githubuserco
 	# use stow to symlink dotfiles into correct locations
 	cd ~/Code/dotFiles/ || exit 1
 	rm ~/.zshrc
-	stow --no-folding -t ~/ dotFiles
+	stow -v --no-folding -t ~ *
 }
 
 {
