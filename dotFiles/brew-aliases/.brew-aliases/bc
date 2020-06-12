@@ -1,0 +1,6 @@
+#! /usr/local/bin/bash
+# alias: brew bc
+#:  * `bc` [args...]
+#:    `brew bc` is an alias for `brew bundle cleanup`
+brew bundle cleanup $*
+

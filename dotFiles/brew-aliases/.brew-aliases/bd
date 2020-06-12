@@ -1,0 +1,6 @@
+#! /usr/local/bin/bash
+# alias: brew bd
+#:  * `bd` [args...]
+#:    `brew bd` is an alias for `brew bundle dump`
+brew bundle dump $*
+
