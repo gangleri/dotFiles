@@ -115,18 +115,19 @@ brew "github/gh/gh"
 brew "secrethub/tools/secrethub-cli"
 cask "font-fira-code"
 cask "font-hack-nerd-font"
+cask "iterm2"
 cask "jetbrains-toolbox"
 cask "ngrok"
-cask "iterm2"
 mas "1Password 7", id: 1333542190
 mas "Amphetamine", id: 937984704
 mas "feedly", id: 865500966
 mas "Keynote", id: 409183694
 mas "Magnet", id: 441258766
+mas "NordVPN IKE", id: 1116599239
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Slack", id: 803453959
-mas "Xcode", id: 497799835
-mas "WhatsApp", id: 1147396723
-mas "Twitter", id: 1482454543
 mas "Telegram", id: 747648890
+mas "Twitter", id: 1482454543
+mas "WhatsApp", id: 1147396723
+mas "Xcode", id: 497799835
