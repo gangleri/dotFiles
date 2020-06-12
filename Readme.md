@@ -1,6 +1,10 @@
-# stow ignore for dotFiles
+# Setup for my Mac
 
-clone this to the root of dotFiles tree then run `stow -t ~/. *` to link desired
-dot files into home directory.
+This repo holds all my dot files and config to setup a fresh MacOS installaltion
+with the tools I use. Run this script with:
 
+```
+curl -o- https://raw.githubusercontent.com/gangleri/dotFiles/master/setup.sh |
+sh
+```
 
