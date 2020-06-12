@@ -14,7 +14,7 @@ do
 	ssh-keygen -t rsa -b 4096 -f ~/.ssh/gangleri${k} -C "${EMAIL:-alan@gangleri.net}"
 	ssh-add -K ~/.ssh/gangleri${k}
 
-	pbcopy < "$HOME/.ssh/gangleri${k}"
+	pbcopy < "$HOME/.ssh/gangleri${k}.pub"
 	echo "Add key to ${k}"
 	echo "Press enter to continue"
 	read
@@ -30,12 +30,14 @@ git clone git@github.com:gangleri/dotFiles.git ~/Code/dotFiles
 	brew bundle install
 }
 
+sudo xcodebuild -license accept
+
 # Install fonts used by figlet, get the installed version of figlet to determine the path to write to
 curl --create-dirs -o ~/.config/figlet/fonts/Bloody.flf https://raw.githubusercontent.com/xero/figlet-fonts/master/Bloody.flf
 
 {
 	# use stow to symlink dotfiles into correct locations
-	cd ~/Code/dotFiles/ || exit 1
+	cd ~/Code/dotFiles/dotFiles || exit 1
 	rm ~/.zshrc
 	stow -v --no-folding -t ~ *
 }
