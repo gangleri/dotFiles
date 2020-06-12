@@ -98,6 +98,8 @@ alias grep="ggrep $GREP_OPTIONS"
 
 alias mgit="mgitstatus"
 
+alias b="bundle"
+
 # Wrap the cat command so that if it's called directly highlight is used but 
 # if it is being called as part of a pipe standard cat will be used
 function cat {
