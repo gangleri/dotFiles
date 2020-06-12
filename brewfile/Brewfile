@@ -117,6 +117,7 @@ cask "font-fira-code"
 cask "font-hack-nerd-font"
 cask "jetbrains-toolbox"
 cask "ngrok"
+cask "iterm2"
 mas "1Password 7", id: 1333542190
 mas "Amphetamine", id: 937984704
 mas "feedly", id: 865500966
