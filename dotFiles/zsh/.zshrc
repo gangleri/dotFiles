@@ -155,3 +155,4 @@ if [ -f '/Users/alan/Applications/google-cloud-sdk/completion.zsh.inc' ]; then .
 export PATH="$PATH:/usr/local/opt/coreutils/libexec/gnubin"
 
 # source /Users/alan/Library/Preferences/org.dystroy.broot/launcher/bash/br
+eval "$(rbenv init -)"
