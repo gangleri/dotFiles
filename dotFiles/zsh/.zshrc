@@ -56,7 +56,6 @@ export SAVEHIST=$HISTSIZE
 export LANG=en_GB.UTF-8
 export PATH="${PATH}:$HOME/.bin"
 export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
-export PATH="$PATH:$HOME/.rvm/bin"
 export PATH=$PATH:$HOME/go/bin:$HOME/.cargo/bin
 export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 export PATH=${PATH}:${ANDROID_HOME}/tools
