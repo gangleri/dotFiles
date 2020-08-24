@@ -151,7 +151,8 @@ Plugin 'JamshedVesuna/vim-markdown-preview'
 " Plugin 'flazz/vim-colorschemes'
 " Plugin 'nanotech/jellybeans.vim'
 " Plugin 'rking/vim-detailed'
-Plugin 'ajmwagar/vim-deus'
+Plugin 'arcticicestudio/nord-vim'
+" Plugin 'ajmwagar/vim-deus'
 
 " Note taking
 Plugin 'xolox/vim-misc'
@@ -160,7 +161,8 @@ Plugin 'xolox/vim-notes'
 call vundle#end()
 
 set background=dark
-colorscheme nordisk
+" colorscheme nordisk
+colorscheme nord
 " colorscheme deus
 
 " hi link EasyMotionTarget ErrorMsg

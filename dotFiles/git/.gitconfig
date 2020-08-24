@@ -58,3 +58,5 @@
 		var=($(git status | grep 'modified' | sed s/modified\\://g)); \
 		git diff ${var[${1:-0}]};  \
 		}; f"
+[core]
+	pager = diff-so-fancy | less --tabs=4 -RFX

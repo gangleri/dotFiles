@@ -21,13 +21,14 @@ antigen bundle golang
 antigen bundle history-substring-search
 antigen bundle kubectl
 antigen bundle npm
-antigen bundle nvm
 antigen bundle pep8
+antigen bundle pyenv
 antigen bundle pip
 antigen bundle pipenv
 antigen bundle ssh-agent
 antigen bundle sudo
 antigen bundle vi-mode
+antigen bundle virtualenv
 antigen bundle vue
 antigen bundle yarn
 antigen bundle zsh-autosuggestions
@@ -53,13 +54,14 @@ export HISTSIZE=999999999
 export HISTFILE=~/.zsh_history  # ensure history file visibility
 export SAVEHIST=$HISTSIZE
 export LANG=en_GB.UTF-8
-export NVM_DIR="$HOME/.nvm"
+export PATH="${PATH}:$HOME/.bin"
 export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
 export PATH="$PATH:$HOME/.rvm/bin"
 export PATH=$PATH:$HOME/go/bin:$HOME/.cargo/bin
 export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 export PATH=${PATH}:${ANDROID_HOME}/tools
 export PATH=${PATH}:${HOME}/flutter/bin
+export PATH=${PATH}:${HOME}/opt/GNAT/2020/bin
 export MANPATH="/usr/local/opt/make/libexec/gnuman:/usr/local/opt/erlang/lib/erlang/man:$MANPATH"
 export UPDATE_ZSH_DAYS=3
 
@@ -90,8 +92,6 @@ alias pipu='pip list --outdated | tail +3 | cut -d' ' -f 1 | xargs -n1 pip insta
 alias pipo3='pip3 list --outdated'
 alias ppu3='pip3 list --outdated | tail +3 | cut -d' ' -f 1 | xargs -n1 pip3 install -U'
 
-alias nvml='nvm install $(nvm ls-remote | tail -n 1 | grep -oE "v.+")'
-
 alias tree='tree -C'
 
 alias grep="ggrep $GREP_OPTIONS"
@@ -100,15 +100,21 @@ alias mgit="mgitstatus"
 
 alias b="brew"
 
+alias l='colorls --group-directories-first --almost-all'
+alias lt='colorls --group-directories-first --almost-all --tree'
+alias ll='colorls --group-directories-first --almost-all --long'
+
+alias cat='bat'
+
 # Wrap the cat command so that if it's called directly highlight is used but 
 # if it is being called as part of a pipe standard cat will be used
-function cat {
-	if [ -t 1 ]; then
-		highlight -O ansi --force $@
-	else
-		command cat $@
-	fi
-}
+# function cat {
+# 	if [ -t 1 ]; then
+# 		highlight -O ansi --force $@
+# 	else
+# 		command cat $@
+# 	fi
+# }
 
 autoload zmv
 autoload zcalc
@@ -129,16 +135,11 @@ bindkey '^[[B' down-line-or-beginning-search
 bindkey -s '^r' 'hh\n'
 bindkey -s '^q' 'br\n'
 
-export NVM_DIR="$HOME/.nvm"
-if [ -f "$NVM_DIR/nvm.sh" ]; then 
-	source "$NVM_DIR/nvm.sh"  # This loads nvm
-fi
-
 if [ -f "$HOME/.secrets" ]; then
 	source "$HOME/.secrets"
 fi
 
-lolcat -t "${HOME}/.skull"
+# lolcat -t "${HOME}/.skull"
 
 # added by pipsi (https://github.com/mitsuhiko/pipsi)
 export PATH="${HOME}/.local/bin:$PATH"
@@ -146,13 +147,15 @@ export PATH="${HOME}/.local/bin:$PATH"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/alan/Applications/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/alan/Applications/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/alan/Applications/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/alan/Applications/google-cloud-sdk/completion.zsh.inc'; fi
-
+if [ -f '/Users/alan/Applications/gcloud-sdk/path.zsh.inc' ]; then . '/Users/alan/Applications/gcloud-sdk/path.zsh.inc'; fi
 
 export PATH="$PATH:/usr/local/opt/coreutils/libexec/gnubin"
 
 # source /Users/alan/Library/Preferences/org.dystroy.broot/launcher/bash/br
+eval "$(pyenv init -)"
+eval "$(pipenv --completion)"
 eval "$(rbenv init -)"
+eval "$(nodenv init -)"
+
+ eval "$(starship init zsh)"
+ source $HOME/.poetry/env
