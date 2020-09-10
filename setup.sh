@@ -15,9 +15,13 @@ do
 	ssh-add -K ~/.ssh/gangleri${k}
 
 	pbcopy < "$HOME/.ssh/gangleri${k}.pub"
-	echo "Add key to ${k}"
+	echo "Copied key [${k}] to clipboard"
 	echo "Press enter to continue"
-	read
+	while true ; do
+		if [[ $(read -r -t 3 -n 1) -eq 0 ]] ; then 
+			break
+		fi
+	done
 done
 
 mkdir -p ~/Code
