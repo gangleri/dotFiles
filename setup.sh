@@ -2,10 +2,9 @@
 
 which git ||  (echo "Install XCode cli tools and accept the license xcode-select --install && sudo xcodebuild -license" && exit 1)
 
-# install oh-my-zsh, vundle, Homebrew, nvm
+# install oh-my-zsh, vundle, Homebrew
 curl -o- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh
 curl -o- https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | zsh
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 # generate ssh keys
@@ -23,6 +22,8 @@ do
 		fi
 	done
 done
+
+eval "$(ssh-agent -s)"
 
 mkdir -p ~/Code
 
