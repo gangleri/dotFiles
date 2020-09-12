@@ -231,6 +231,10 @@ let g:git_messenger_into_popup_after_show = 'true'
 
 let g:notes_directories = ['~/Library/Mobile\ Documents/com~apple~CloudDocs/Notes']
 
+" Set the payth to python 2 & 3 so neovim plugin isn't needed in every virtualenv
+let g:python2_host_prog = '/Users/alan/.pyenv/shims/python2'
+let g:python3_host_prog = '/Users/alan/.pyenv/shims/python3'
+
 
 runtime macros/matchit.vim          " use matchit that comes with vim
 " set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
