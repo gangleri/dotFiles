@@ -3,6 +3,8 @@ source /usr/local/share/antigen/antigen.zsh
 
 antigen use oh-my-zsh
 
+fpath+=~/.zfunc
+
 ZSH_THEME="agnoster"
 CASE_SENSITIVE="false" # Case insensitive completion
 COMPLETION_WAITING_DOTS="true"
@@ -65,7 +67,7 @@ export MANPATH="/usr/local/opt/make/libexec/gnuman:/usr/local/opt/erlang/lib/erl
 export UPDATE_ZSH_DAYS=3
 
 hash -d code=$HOME/Code
-hash -d dotFiles=$HOME/Code/dotFiles
+hash -d dotfiles=$HOME/Code/dotFiles
 hash -d downloads=$HOME/Downloads
 hash -d go=$HOME/go/src
 hash -d icloud=$HOME/Library/Mobile\ Documents/com~apple~CloudDocs
