@@ -234,6 +234,8 @@ let g:notes_directories = ['~/Library/Mobile\ Documents/com~apple~CloudDocs/Note
 " Set the payth to python 2 & 3 so neovim plugin isn't needed in every virtualenv
 let g:python2_host_prog = '/Users/alan/.pyenv/shims/python2'
 let g:python3_host_prog = '/Users/alan/.pyenv/shims/python3'
+let g:ruby_host_prog = '/Users/alan/.rbenv/shims/ruby'
+let g:node_host_prog = '/Users/alan/.nodenv/shims/node'
 
 
 runtime macros/matchit.vim          " use matchit that comes with vim
