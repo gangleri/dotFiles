@@ -67,6 +67,7 @@ Plugin 'junegunn/fzf'
 Plugin 'SirVer/ultisnips'
 Plugin 'pechorin/any-jump.vim'
 Plugin 'skywind3000/vim-dict'
+Plugin 'kien/rainbow_parentheses.vim'
 
 " Ansible
 Plugin 'chase/vim-ansible-yaml'
@@ -238,6 +239,15 @@ let g:ruby_host_prog = '/Users/alan/.rbenv/shims/ruby'
 let g:node_host_prog = '/Users/alan/.nodenv/shims/node'
 
 
+" Configure Rainbow Parentheses
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+
 runtime macros/matchit.vim          " use matchit that comes with vim
 " set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 set rtp+=/usr/local/opt/fzf
@@ -338,6 +348,10 @@ vmap <expr> <UP> DVB_Drag('up')
 vmap <expr> D DVB_Duplicate()
 
 vnoremap <silent> <Enter> :EasyAlign<cr>
+
+
+" Mappings for terminal
+tnoremap <Esc> <C-\><C-n>
 
 " Auto commands
 au BufNewFile,BufRead *rc setfiletype bash
