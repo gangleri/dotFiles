@@ -3,31 +3,7 @@
 which git ||  (echo "Install XCode cli tools and accept the license xcode-select --install && sudo xcodebuild -license" && exit 1)
 
 # install oh-my-zsh, vundle, Homebrew
-curl -o- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh
-curl -o- https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-# generate ssh keys
-for k in 'GitHub' 'GitLab'
-do
-	ssh-keygen -t rsa -b 4096 -f ~/.ssh/gangleri${k} -C "${EMAIL:-alan@gangleri.net}"
-	ssh-add -K ~/.ssh/gangleri${k}
-
-	pbcopy < "$HOME/.ssh/gangleri${k}.pub"
-	echo "Copied key [${k}] to clipboard"
-	echo "Press enter to continue"
-	while true ; do
-		if [[ $(read -r -t 3 -n 1) -eq 0 ]] ; then 
-			break
-		fi
-	done
-done
-
-eval "$(ssh-agent -s)"
-
-mkdir -p ~/Code
-
-git clone git@github.com:gangleri/dotFiles.git ~/Code/dotFiles
 
 # install all programs listed in the brefile
 {

@@ -54,10 +54,10 @@ Plugin 'exitface/synthwave.vim'
 Plugin 'kamwitsta/nordisk'
 Plugin 'yonchu/accelerated-smooth-scroll'
 Plugin 'Shougo/deoplete.nvim'
-Plugin 'zchee/deoplete-go', {'build': {'unix': 'make'}}
-Plugin  'deoplete-plugins/deoplete-docker'
-Plugin 'deoplete-plugins/deoplete-clang'
-Plugin 'deoplete-plugins/deoplete-zsh'
+" Plugin 'zchee/deoplete-go', {'build': {'unix': 'make'}}
+" Plugin  'deoplete-plugins/deoplete-docker'
+" Plugin 'deoplete-plugins/deoplete-clang'
+" Plugin 'deoplete-plugins/deoplete-zsh'
 Plugin 'dense-analysis/ale'
 Plugin 'mbbill/undotree'
 Plugin 'mileszs/ack.vim'
@@ -194,7 +194,9 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
-let g:deoplete#sources#go#gocode_binary = '/Users/alan/go/bin/gocode'
+" let g:deoplete#sources#go#gocode_binary = '/Users/alanbradley/go/bin/gocode'
+let g:snipMate = { 'snippet_version' : 1 }
+
 
 if has('nvim')
 	" Enable deoplete on startup
@@ -233,10 +235,11 @@ let g:git_messenger_into_popup_after_show = 'true'
 let g:notes_directories = ['~/Library/Mobile\ Documents/com~apple~CloudDocs/Notes']
 
 " Set the payth to python 2 & 3 so neovim plugin isn't needed in every virtualenv
-let g:python2_host_prog = '/Users/alan/.pyenv/shims/python2'
-let g:python3_host_prog = '/Users/alan/.pyenv/shims/python3'
-let g:ruby_host_prog = '/Users/alan/.rbenv/shims/ruby'
-let g:node_host_prog = '/Users/alan/.nodenv/shims/node'
+let g:python_host_prog = '/usr/bin/python2'
+let g:python2_host_prog = '/usr/bin/python2'
+let g:python3_host_prog = '/Users/alanbradley/.pyenv/shims/python3'
+let g:ruby_host_prog = '/Users/alanbradley/.rbenv/shims/ruby'
+let g:node_host_prog = '/Users/alanbradley/.nodenv/shims/node'
 
 
 " Configure Rainbow Parentheses
@@ -285,7 +288,8 @@ set t_Co=256                        " Number of colors
 set encoding=utf-8                  " Set the character encoding used inside VIM. Applies to text in buffers, registers, Strings in expressions etc.
 set spelllang=en_us
 set splitbelow
-set guifont=Fira\ Code:h12
+set guifont=Hack\ Nerd\ Font\ Mono:h12
+" set guifont=Fira\ Code:h12
 set pastetoggle=<F2>
 set cmdheight=2
 set signcolumn=yes

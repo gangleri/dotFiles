@@ -9,12 +9,8 @@
 [http]
 	sslVerify = true
 	cookiefile = /Users/alan/.gitcookies
-[url "git@gitlab.com:"]
-	insteadOf = https://gitlab.com/
-[url "git@bitbucket.org:"]
-	insteadOf = https://bitbucket.org/
-# [url "git@github.com:"]
-# 	insteadOf = https://github.com/
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
 [alias]
 	aa = add -A
 	bls = branch --list
@@ -60,3 +56,5 @@
 		}; f"
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
+[init]
+	defaultBranch = main
