@@ -44,7 +44,7 @@ antigen apply
 
 export HSTR_CONFIG=hicolor
 export ANDROID_HOME=${HOME}/Library/Android/sdk
-export BROWSER=chromium
+# export BROWSER=chromium
 export DEFAULT_USER=$USER
 export EDITOR="nvim"
 export GIT_EDITOR=$EDITOR
@@ -63,6 +63,7 @@ export PATH=${PATH}:${HOME}/flutter/bin
 export PATH=${PATH}:${HOME}/opt/GNAT/2020/bin
 export MANPATH="/usr/local/opt/make/libexec/gnuman:/usr/local/opt/erlang/lib/erlang/man:$MANPATH"
 export UPDATE_ZSH_DAYS=3
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
 
 hash -d code=$HOME/Code
 hash -d dotFiles=$HOME/Code/dotFiles
@@ -79,6 +80,7 @@ setopt numericglobsort
 setopt hist_ignore_all_dups
 
 alias ..='cd ..'
+alias o='open'
 alias vi='nvim'
 alias vim='mvim -v'
 alias vimrc='$EDITOR ~/.config/nvim/init.vim'
@@ -152,9 +154,8 @@ export PATH="$PATH:/usr/local/opt/coreutils/libexec/gnubin"
 
 # source /Users/alan/Library/Preferences/org.dystroy.broot/launcher/bash/br
 eval "$(pyenv init -)"
-eval "$(pipenv --completion)"
 eval "$(rbenv init -)"
 eval "$(nodenv init -)"
 
- eval "$(starship init zsh)"
- source $HOME/.poetry/env
+eval "$(starship init zsh)"
+source $HOME/.poetry/env

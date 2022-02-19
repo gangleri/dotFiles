@@ -39,6 +39,7 @@
 	ta = tag  -a 
 	d = diff
 	l = log -p
+	rao = remote add origin
 	rH = reset --hard HEAD
 	st = stash
 	mom = merge origin/master
@@ -60,3 +61,5 @@
 		}; f"
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
+[init]
+	defaultBranch = main
