@@ -16,14 +16,13 @@ do
 	pbcopy < "$HOME/.ssh/gangleri${k}.pub"
 	echo "Copied key [${k}] to clipboard"
 	echo "Press enter to continue"
-	while true ; do
-		if [[ $(read -r -t 3 -n 1) -eq 0 ]] ; then 
-			break
-		fi
-	done
+	read < /dev/stdin
 done
 
 eval "$(ssh-agent -s)"
+
+echo "Press enter to continue"
+read < /dev/stdin 
 
 mkdir -p ~/Code
 
@@ -74,5 +73,4 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
 # Customise menubar
-open '/System/Library/CoreServices/Menu Extras/Bluetooth.menu'
 open '/System/Library/CoreServices/Menu Extras/Volume.menu'
