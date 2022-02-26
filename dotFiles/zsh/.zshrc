@@ -1,5 +1,7 @@
 # zmodload zsh/zprof
-source /usr/local/share/antigen/antigen.zsh
+source /opt/homebrew/share/antigen/antigen.zsh
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 antigen use oh-my-zsh
 
@@ -11,12 +13,10 @@ COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="dd.mm.yyyy"
 
 # Register plugins included with oh-my-zsh
-antigen bundle cargo
 antigen bundle colored-man-pages
 antigen bundle colorize
 antigen bundle cp
 antigen bundle dirhistory
-antigen bundle django
 antigen bundle docker
 antigen bundle git
 antigen bundle golang
@@ -154,10 +154,8 @@ if [ -f '/Users/alan/Applications/gcloud-sdk/path.zsh.inc' ]; then . '/Users/ala
 export PATH="$PATH:/usr/local/opt/coreutils/libexec/gnubin"
 
 # source /Users/alan/Library/Preferences/org.dystroy.broot/launcher/bash/br
-eval "$(pyenv init -)"
-eval "$(pipenv --completion)"
+eval "$(pyenv init --path)"
 eval "$(rbenv init -)"
 eval "$(nodenv init -)"
 
  eval "$(starship init zsh)"
- source $HOME/.poetry/env
