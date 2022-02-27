@@ -72,4 +72,4 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
 # Customise menubar
-open '/System/Library/CoreServices/Menu Extras/Volume.menu'
+# open '/System/Library/CoreServices/Menu Extras/Volume.menu'
