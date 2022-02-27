@@ -27,6 +27,8 @@ mkdir -p ~/Code
 
 git clone git@github.com:gangleri/dotFiles.git ~/Code/dotFiles
 
+exit
+
 # install all programs listed in the brefile
 {
 	cd ~/Code/dotfiles/brewfile || exit 1
