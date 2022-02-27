@@ -9,7 +9,9 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 # generate ssh keys
 ssh-keygen -t ed25519 -f ~/.ssh/gangleriGitHub -C "${EMAIL:-alan@gangleri.net}"
-ssh-add -K ~/.ssh/gangleri${k}
+chmod 600 ~/.ssh/gangleriGitHub
+chmod 644 ~/.ssh/gangleriGitHub.pub
+ssh-add ~/.ssh/gangleri${k}
 
 pbcopy < "$HOME/.ssh/gangleriGitHub.pub"
 echo "Press enter to continue"
