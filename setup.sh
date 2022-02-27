@@ -8,10 +8,11 @@ curl -o- https://raw.githubusercontent.com/Homebrew/install/master/install.sh | 
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 # generate ssh keys
+mkdir -m 700 ~/.ssh
 ssh-keygen -t ed25519 -f ~/.ssh/gangleriGitHub -C "${EMAIL:-alan@gangleri.net}"
 chmod 600 ~/.ssh/gangleriGitHub
 chmod 644 ~/.ssh/gangleriGitHub.pub
-ssh-add ~/.ssh/gangleri${k}
+ssh-add ~/.ssh/gangleriGitHub
 
 pbcopy < "$HOME/.ssh/gangleriGitHub.pub"
 echo "Press enter to continue"
