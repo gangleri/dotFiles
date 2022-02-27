@@ -8,21 +8,17 @@ curl -o- https://raw.githubusercontent.com/Homebrew/install/master/install.sh | 
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 # generate ssh keys
-for k in 'GitHub' 'GitLab'
-do
-	ssh-keygen -t rsa -b 4096 -f ~/.ssh/gangleri${k} -C "${EMAIL:-alan@gangleri.net}"
-	ssh-add -K ~/.ssh/gangleri${k}
+ssh-keygen -t ed25519 -f ~/.ssh/gangleriGitHub -C "${EMAIL:-alan@gangleri.net}"
+ssh-add -K ~/.ssh/gangleri${k}
 
-	pbcopy < "$HOME/.ssh/gangleri${k}.pub"
-	echo "Copied key [${k}] to clipboard"
-	echo "Press enter to continue"
-	read < /dev/stdin
-done
+pbcopy < "$HOME/.ssh/gangleriGitHub.pub"
+echo "Press enter to continue"
+read <&9
 
 eval "$(ssh-agent -s)"
 
 echo "Press enter to continue"
-read < /dev/stdin 
+read <&9
 
 mkdir -p ~/Code
 
