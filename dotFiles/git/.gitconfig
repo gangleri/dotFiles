@@ -52,12 +52,23 @@
 	contains = !sh -c 'git branch -a --contains $1'
 	search = !sh -c 'git grep "$1" $(git rev-list --all)'
 	puo = "!f(){ \
+			git push -u origin $(git branch | grep \\* | cut -d ' ' -f2); \
+		}; f"
 	bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
 	alias = "!f() { git config --list | grep alias | sed -r 's/alias\\.(.+)=(.+)/\\1\\t\\t\\2/'; }; f"
 	al=alias
 	cmp = "!f(){ \
+			git checkout master; git pull; \
+		}; f"
 	dn = "!f() { \
-	crb = "!f(){ \
+		var=($(git status | grep 'modified' | sed s/modified\\://g)); \
+		git diff ${var[${1:-0}]};  \
+		}; f"
+	crb = "!f() { \
+			echo 'Creating branch '$1; \
+			git fetch --all; \
+			git checkout -t "origin/${1}"; \
+		}; f"
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
 	
