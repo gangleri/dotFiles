@@ -5,3 +5,10 @@ truncation_symbol = ""
 
 [username]
 disabled = true
+
+[python]
+pyenv_version_name = true
+python_binary = "python3"
+
+[sudo]
+disabled = false

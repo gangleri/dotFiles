@@ -229,11 +229,11 @@ let g:git_messenger_into_popup_after_show = 'true'
 let g:notes_directories = ['~/Library/Mobile\ Documents/com~apple~CloudDocs/Notes']
 
 " Set the payth to python 2 & 3 so neovim plugin isn't needed in every virtualenv
-let g:python_host_prog = '/Users/alan/.pyenv/shims/python2'
-let g:python2_host_prog = '/Users/alan/.pyenv/shims/python2'
-let g:python3_host_prog = '/Users/alanbradley/.pyenv/shims/python3'
-let g:ruby_host_prog = '/Users/alanbradley/.rbenv/shims/ruby'
-let g:node_host_prog = '/Users/alanbradley/.nodenv/shims/node'
+let g:python_host_prog = $HOME.'/.pyenv/shims/python2'
+let g:python2_host_prog = $HOME.'/.pyenv/shims/python2'
+let g:python3_host_prog = $HOME.'/.pyenv/shims/python3'
+" let g:ruby_host_prog = $HOME.'/.rbenv/shims/ruby'
+" let g:node_host_prog = $HOME.'/.nodenv/shims/node'
 
 
 " Configure Rainbow Parentheses

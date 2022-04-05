@@ -1,6 +1,13 @@
 [user]
 	name = Alan
 	email = alan@gangleri.net
+
+[includeIf "gitdir:~/Code/uradical/"]
+	path = "~/Code/uradical/.gitconfig"
+
+[includeIf "gitdir:~/Code/uradical/customers/dojo/"]
+	path = "~/Code/uradical/customers/dojo/.gitconfig"
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -13,8 +20,6 @@
 	insteadOf = https://gitlab.com/
 [url "git@bitbucket.org:"]
 	insteadOf = https://bitbucket.org/
-# [url "git@github.com:"]
-# 	insteadOf = https://github.com/
 [alias]
 	aa = add -A
 	bls = branch --list
@@ -32,8 +37,9 @@
 	cf = diff --name-only --diff-filter=U
 	co = checkout
 	co- = checkout -- .
-	com = checkout master
+	com = checkout main
 	cob = checkout -b
+	cot = checkout --track
 	i = init
 	t =  tag
 	ta = tag  -a 
@@ -46,20 +52,16 @@
 	contains = !sh -c 'git branch -a --contains $1'
 	search = !sh -c 'git grep "$1" $(git rev-list --all)'
 	puo = "!f(){ \
-			git push -u origin $(git branch | grep \\* | cut -d ' ' -f2); \
-		}; f"
 	bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
 	alias = "!f() { git config --list | grep alias | sed -r 's/alias\\.(.+)=(.+)/\\1\\t\\t\\2/'; }; f"
 	al=alias
 	cmp = "!f(){ \
-			git checkout master; git pull; \
-		}; f"
 	dn = "!f() { \
-		var=($(git status | grep 'modified' | sed s/modified\\://g)); \
-		git diff ${var[${1:-0}]};  \
-		}; f"
+	crb = "!f(){ \
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
 	
 [init]
 	defaultBranch = main
+[pull]
+	rebase = false

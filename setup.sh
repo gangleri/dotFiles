@@ -4,30 +4,29 @@ which git ||  (echo "Install XCode cli tools and accept the license xcode-select
 
 # install oh-my-zsh, vundle, Homebrew
 curl -o- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh
-curl -o- https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
+#curl -o- https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 # generate ssh keys
 mkdir -m 700 ~/.ssh
-ssh-keygen -t ed25519 -f ~/.ssh/gangleriGitHub -C "${EMAIL:-alan@gangleri.net}"
+ssh-keygen -t ed25519-sk -f ~/.ssh/gangleriGitHub -C "${EMAIL:-alan@gangleri.net}"
 chmod 600 ~/.ssh/gangleriGitHub
 chmod 644 ~/.ssh/gangleriGitHub.pub
+eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/gangleriGitHub
 
 pbcopy < "$HOME/.ssh/gangleriGitHub.pub"
 echo "Press enter to continue"
 read <&9
 
-eval "$(ssh-agent -s)"
-
 echo "Press enter to continue"
 read <&9
 
 mkdir -p ~/Code
 
+echo "Press enter to continue"
+read <&9
 git clone git@github.com:gangleri/dotFiles.git ~/Code/dotFiles
-
-exit
 
 # install all programs listed in the brefile
 {
@@ -73,5 +72,5 @@ defaults write com.apple.finder NewWindowTarget -string 'PfHm'
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
-# Customise menubar
-# open '/System/Library/CoreServices/Menu Extras/Volume.menu'
+# Set DNS servers to DNS watch 
+sudo networksetup -setdnsservers W-Fi 84.200.69.80 84.200.70.40

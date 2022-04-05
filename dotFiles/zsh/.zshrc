@@ -1,7 +1,7 @@
 # zmodload zsh/zprof
-source /opt/homebrew/share/antigen/antigen.zsh
+source /usr/local/share/antigen/antigen.zsh
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(/usr/local/bin/brew shellenv)"
 
 antigen use oh-my-zsh
 
@@ -24,7 +24,6 @@ antigen bundle history-substring-search
 antigen bundle kubectl
 antigen bundle npm
 antigen bundle pep8
-antigen bundle pyenv
 antigen bundle pip
 antigen bundle pipenv
 antigen bundle ssh-agent
@@ -45,26 +44,27 @@ antigen theme agnoster
 antigen apply
 
 export HSTR_CONFIG=hicolor
-export ANDROID_HOME=${HOME}/Library/Android/sdk
 export BROWSER=chromium
 export DEFAULT_USER=$USER
 export EDITOR="nvim"
 export GIT_EDITOR=$EDITOR
-# export GOPATH=$(go env GOPATH)
 export HH_CONFIG=hicolor        # get more colors
 export HISTSIZE=999999999
 export HISTFILE=~/.zsh_history  # ensure history file visibility
 export SAVEHIST=$HISTSIZE
 export LANG=en_GB.UTF-8
+export MANPATH="/usr/local/opt/make/libexec/gnuman:/usr/local/opt/erlang/lib/erlang/man:$MANPATH"
+export UPDATE_ZSH_DAYS=3
 export PATH="${PATH}:$HOME/.bin"
 export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
 export PATH=$PATH:$HOME/go/bin:$HOME/.cargo/bin
-export PATH=${PATH}:${ANDROID_HOME}/platform-tools
-export PATH=${PATH}:${ANDROID_HOME}/tools
 export PATH=${PATH}:${HOME}/flutter/bin
-export PATH=${PATH}:${HOME}/opt/GNAT/2020/bin
-export MANPATH="/usr/local/opt/make/libexec/gnuman:/usr/local/opt/erlang/lib/erlang/man:$MANPATH"
-export UPDATE_ZSH_DAYS=3
+
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH=$(brew --prefix openssh)/bin:$PATH
 
 hash -d code=$HOME/Code
 hash -d dotfiles=$HOME/Code/dotFiles
@@ -107,16 +107,8 @@ alias lt='colorls --group-directories-first --almost-all --tree'
 alias ll='colorls --group-directories-first --almost-all --long'
 
 alias cat='bat'
-
-# Wrap the cat command so that if it's called directly highlight is used but 
-# if it is being called as part of a pipe standard cat will be used
-# function cat {
-# 	if [ -t 1 ]; then
-# 		highlight -O ansi --force $@
-# 	else
-# 		command cat $@
-# 	fi
-# }
+# alias swagger-editor="docker run -d -p 80:8080 swaggerapi/swagger-editor"
+alias swagger-editor="doccker start swagger-editor; open 'http://localhost'"
 
 autoload zmv
 autoload zcalc
@@ -124,6 +116,11 @@ autoload zcalc
 zstyle ':completion:*' completer _expand _complete _correct
 zstyle ':completion:*:cd:*' ignore-parents parent pwd
 zstyle ':completion:*' squeeze-slashes true
+
+
+gavatar() {
+	echo "http://gravatar.com/avatar/$(echo -n alan@gangleri.net | md5sum)" |  sed -e 's/\ \ -//g' | tee >(pbcopy)
+}
 
 # [ -f "$HOME/.travis/travis.sh" ] && source $HOME/.travis/travis.sh
 # [ -f "$HOME/.config/exercism/exercism_completion.zsh" ] && source ~/.config/exercism/exercism_completion.zsh
@@ -155,7 +152,8 @@ export PATH="$PATH:/usr/local/opt/coreutils/libexec/gnubin"
 
 # source /Users/alan/Library/Preferences/org.dystroy.broot/launcher/bash/br
 eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
 eval "$(rbenv init -)"
 eval "$(nodenv init -)"
 
- eval "$(starship init zsh)"
+eval "$(starship init zsh)"
