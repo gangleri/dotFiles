@@ -1,3 +1,5 @@
+# Fig pre block. Keep at the top of this file.
+. "$HOME/.fig/shell/zshrc.pre.zsh"
 # zmodload zsh/zprof
 source /usr/local/share/antigen/antigen.zsh
 
@@ -65,6 +67,7 @@ export PATH=${PATH}:${HOME}/flutter/bin
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH=$(brew --prefix openssh)/bin:$PATH
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
 
 hash -d code=$HOME/Code
 hash -d dotfiles=$HOME/Code/dotFiles
@@ -134,10 +137,6 @@ bindkey '^[[B' down-line-or-beginning-search
 bindkey -s '^r' 'hh\n'
 bindkey -s '^q' 'br\n'
 
-if [ -f "$HOME/.secrets" ]; then
-	source "$HOME/.secrets"
-fi
-
 # lolcat -t "${HOME}/.skull"
 
 # added by pipsi (https://github.com/mitsuhiko/pipsi)
@@ -157,3 +156,8 @@ eval "$(rbenv init -)"
 eval "$(nodenv init -)"
 
 eval "$(starship init zsh)"
+
+# Fig post block. Keep at the bottom of this file.
+. "$HOME/.fig/shell/zshrc.post.zsh"
+
+. ~/.luaver/luaver
